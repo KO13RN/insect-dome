@@ -1,0 +1,114 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: 20px auto;
+  text-align: center;
+  font-family: arial;
+  }
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card-img {
+  width: 100%;
+}
+
+.card-info {
+  padding: 20px;
+}
+
+.card-title {
+  color: grey;
+  font-size: 18px;
+}
+
+.card-text {
+  padding: 10px 0;
+}
+
+.album-title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.edit-link {
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.edit-link:hover {
+  opacity: 0.7;
+}
+
+/* Add these styles to your card.css file */
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.add-insect-button,
+.logout-button {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.add-insect-button {
+  background-color: #000;
+  color: white;
+}
+
+.logout-button {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.add-insect-button:hover,
+.logout-button:hover {
+  opacity: 0.7;
+}
+
