@@ -14,6 +14,7 @@ import AlbumPage2 from "./Album2";
 import RegisterPage from "./Register";
 import AddPage from "./AddPage";
 import EditPage from './EditPage';
+import ViewPage from './ViewPage';
 
 
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: '/Edit/:id', // Define the route for EditPage with a parameter ":id"
     element: <EditPage />,
+  },
+  {
+    path: '/view/:id',
+    element: <ViewPage />,
   },
 ]);
 

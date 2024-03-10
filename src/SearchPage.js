@@ -1,14 +1,16 @@
+// SearchPage.js
+
 import React, { useState, useEffect } from 'react';
 import './card.css'; // Import your custom CSS file
 
-function AlbumPage() {
+function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [insectData, setInsectData] = useState([]);
 
   useEffect(() => {
-    // Fetch insect data from the server
-
+    // Fetch insect data from the server based on the search query
     const apiUrl = searchQuery ? `http://localhost:3333/search?q=${encodeURIComponent(searchQuery)}` : 'http://localhost:3333/insects';
+
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -31,8 +33,12 @@ function AlbumPage() {
     <li key={insect.id} className="card">
       <h2 className="card-title">{insect.name}</h2>
       <p className="card-text">{insect.data}</p>
-      <img className="card-img" src={`${insect.pic_name}`} alt={insect.name} />
+      <img className="card-img" src={`/${insect.pic_name}`} alt={insect.name} />
       <div className="card-info">
+        <button>View</button>
+        <a href={`/Edit/${insect.id}`} className="edit-link">
+          Edit
+        </a>
       </div>
     </li>
   );
@@ -45,23 +51,21 @@ function AlbumPage() {
     return result;
   };
 
-  const chunkedInsectData = chunkArray(insectData, 4);
+  const chunkedInsectData = chunkArray(insectData, 5);
 
   return (
     <div>
-     <h1 className="album-title">Search Insects</h1>
-    <div className="search-bar-container"> {/* Add container div */}
-      <input
-        type="text"
-        placeholder="Enter insect name"
-        value={searchQuery}
-        onChange={handleSearchChange}
-        className="search-bar"
-      />
-    </div>
-      <h1 className="album-title">สายพันธุ์แมลงภายในโดมจำลอง</h1> {/* Apply the album-title class */}
+      <h1 className="album-title">Search Insects</h1>
+      <div>
+        <input
+          type="text"
+          placeholder="Enter insect name"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+      </div>
       {chunkedInsectData.map((row, rowIndex) => (
-        <ul key={rowIndex} className="card-container"> {/* Apply the card-container class */}
+        <ul key={rowIndex} className="card-container">
           {row.map((insect) => createCard(insect))}
         </ul>
       ))}
@@ -69,4 +73,4 @@ function AlbumPage() {
   );
 }
 
-export default AlbumPage;
+export default SearchPage;

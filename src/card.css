@@ -112,3 +112,99 @@ button:hover, a:hover {
   opacity: 0.7;
 }
 
+
+/* Add these styles to your card.css file */
+.search-bar-container {
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.album-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.add-insect-button-container {
+  margin-bottom: 20px;
+}
+
+.add-insect-button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.add-insect-button a {
+  text-decoration: none;
+  color: white;
+}
+
+.add-insect-button:hover {
+  background-color: #45a049;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: 20px 0;
+  text-align: center;
+  font-family: arial;
+}
+
+.card-title {
+  color: grey;
+  font-size: 18px;
+}
+
+.card-text {
+  padding: 10px 0;
+}
+
+.card-img {
+  width: 100%;
+}
+
+.card-info {
+  padding: 20px;
+}
+
+.edit-link {
+  text-decoration: none;
+  color: #4caf50;
+}
+
+.edit-link:hover {
+  text-decoration: underline;
+}
+.search-bar-container {
+  margin-bottom: 20px;
+  text-align: center; /* Center the content */
+}
+
+.search-bar {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%; /* Adjust the width if needed */
+  box-sizing: border-box;
+}
