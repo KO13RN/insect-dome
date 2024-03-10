@@ -28,7 +28,7 @@ function AddPage() {
       console.log('Response:', response.data);
       
       // Save
-      const responseSave = await axios.post('http://localhost:3333/save_insects', {
+       await axios.post('http://localhost:3333/save_insects', {
         Name : name,
         Data: data,
         pic_name : response.data.data
