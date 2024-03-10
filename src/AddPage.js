@@ -31,7 +31,6 @@ function AddPage() {
       const responseSave = await axios.post('http://localhost:3333/save_insects', {
         Name : name,
         Data: data,
-        pic_name : picName,
         pic_name : response.data.data
       });
  
