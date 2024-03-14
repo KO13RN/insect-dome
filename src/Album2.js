@@ -33,6 +33,7 @@ function AlbumPage() {
       <p className="card-text">{insect.data}</p>
       <img className="card-img" src={`${insect.pic_name}`} alt={insect.name} />
       <div className="card-info">
+      <a href={`/view/${insect.id}`} className="view-link"> View</a> {/* Add the Edit button link */}
       </div>
     </li>
   );

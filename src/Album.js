@@ -56,15 +56,34 @@ function AlbumPage() {
     window.location ='/Login'
   }
 
+  const handleDelete = (id) => {
+    // Send a request to delete the insect with the specified ID
+    fetch(`http://localhost:3333/insects/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === 'ok') {
+          // Update the insect data after deletion
+          setInsectData((prevData) => prevData.filter((insect) => insect.id !== id));
+        } else {
+          console.error('Error deleting insect:', data.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Error deleting insect:', error);
+      });
+  };
+
   const createCard = (insect) => (
     <li key={insect.id} className="card">
       <h2 className="card-title">{insect.name}</h2>
       <p className="card-text">{insect.data}</p>
       <img className="card-img" src={`${insect.pic_name}`} alt={insect.name} />
       <div className="card-info">
-
           <a href={`/view/${insect.id}`} className="view-link"> View</a> {/* Add the Edit button link */}
         <a href={`/Edit/${insect.id}`} className="edit-link">Edit</a> {/* Add the Edit button link */}
+        <button onClick={() => handleDelete(insect.id)}>Delete</button>
       </div>
     </li>
   );
