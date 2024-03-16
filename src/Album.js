@@ -57,22 +57,24 @@ function AlbumPage() {
   }
 
   const handleDelete = (id) => {
-    // Send a request to delete the insect with the specified ID
-    fetch(`http://localhost:3333/insects/${id}`, {
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === 'ok') {
-          // Update the insect data after deletion
-          setInsectData((prevData) => prevData.filter((insect) => insect.id !== id));
-        } else {
-          console.error('Error deleting insect:', data.message);
-        }
+    if (window.confirm('Are you sure you want to delete this insect?')) {
+      // Send DELETE request to server
+      fetch(`http://localhost:3333/insects/${id}`, {
+        method: 'DELETE',
       })
-      .catch((error) => {
-        console.error('Error deleting insect:', error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === 'ok') {
+            // If deletion is successful, update the state or perform any other necessary action
+            setInsectData((prevData) => prevData.filter((insect) => insect.id !== id));
+          } else {
+            console.error('Error deleting insect:', data.message);
+          }
+        })
+        .catch((error) => {
+          console.error('Error deleting insect:', error);
+        });
+    }
   };
 
   const createCard = (insect) => (
