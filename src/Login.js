@@ -138,7 +138,7 @@ export default function SignInSide() {
               Visit as a guest
             </Button>
 
-            <a href="https://streams.vagon.io/streams/27044977-a910-4267-ad48-6ef7dcdadbfa" target="_blank" rel="noopener noreferrer">
+            <a href="https://streams.vagon.io/streams/50ab48af-2e2d-4f8d-be3c-58b1e947e431" target="_blank" rel="noopener noreferrer">
                 <Button
                   fullWidth
                   variant="contained"

@@ -20,7 +20,7 @@ button {
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 100%;
+  
   font-size: 18px;
 }
 
@@ -39,10 +39,6 @@ button:hover, a:hover {
   align-items: center;
 }
 
-
-.card-img {
-  width: 100%;
-}
 
 .card-info {
   padding: 20px;
@@ -94,6 +90,7 @@ button:hover, a:hover {
   font-size: 16px;
   text-align: center;
   cursor: pointer;
+  width: 100%;
   margin-right: 10px;
 }
 
@@ -180,17 +177,15 @@ button:hover, a:hover {
 }
 
 .card-img {
-  width: 100%;
+  width: 300px; 
+  height: 250px;
+  object-fit: cover; /* Maintain aspect ratio and cover the entire space */
 }
 
 .card-info {
   padding: 20px;
 }
 
-.edit-link {
-  text-decoration: none;
-  color: #4caf50;
-}
 
 .edit-link:hover {
   text-decoration: underline;
