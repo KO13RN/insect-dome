@@ -1,8 +1,8 @@
 
-// import Button from '@mui/material/Button';
+ //import Button from '@mui/material/Button';
 
 function App() {
-  window.location ='/Login'
+   window.location ='/Login'
 }
 
 export default App;

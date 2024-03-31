@@ -33,11 +33,7 @@ a {
 button:hover, a:hover {
   opacity: 0.7;
 }
-.card-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 
 .card-info {
@@ -156,7 +152,8 @@ button:hover, a:hover {
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+
 }
 
 .card {
@@ -202,4 +199,31 @@ button:hover, a:hover {
   border-radius: 5px;
   width: 80%; /* Adjust the width if needed */
   box-sizing: border-box;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .card-container {
+    flex-direction: column; /* Change the direction to column for smaller screens */
+    align-items: center; /* Center align items */
+  }
+
+  .card {
+    width: 90%; /* Reduce card width for smaller screens */
+    margin: 20px 0; /* Adjust margin */
+  }
+
+  .card-img {
+    width: 100%; /* Make the image width 100% for smaller screens */
+    height: auto; /* Allow the image height to adjust accordingly */
+  }
+
+  .search-bar-container {
+    text-align: center; /* Center the search bar on smaller screens */
+  }
+
+  .search-bar {
+    width: 80%; /* Adjust the width of the search bar */
+  }
 }
