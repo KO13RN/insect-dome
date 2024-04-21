@@ -31,7 +31,7 @@ function AlbumPage() {
       .catch((error) => {
         console.error('Error:', error);
       });
-
+      
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -80,11 +80,17 @@ function AlbumPage() {
   const createCard = (insect) => (
     <li key={insect.id} className="card">
       <h2 className="card-title">{insect.name}</h2>
-      <p className="card-text">{insect.data}</p>
+      <p className="card-text">ชื่อสามัญ: {insect.common_name}</p>
+      <p className="card-text"><em>ชื่อวิทยาศาสตร์: {insect.scientific_name}</em></p>
+      <p className="card-text">วงศ์: {insect.family}</p>
       <img className="card-img" src={`${insect.pic_name}`} alt={insect.name} />
       <div className="card-info">
-          <a href={`/view/${insect.id}`} className="view-link"> View</a> {/* Add the Edit button link */}
-        <a href={`/Edit/${insect.id}`} className="edit-link">Edit</a> {/* Add the Edit button link */}
+        <a href={`/view/${insect.id}`} className="view-link">
+          View
+        </a>
+        <a href={`/edit/${insect.id}`} className="edit-link">
+          Edit
+        </a>
         <button onClick={() => handleDelete(insect.id)}>Delete</button>
       </div>
     </li>
@@ -101,7 +107,7 @@ function AlbumPage() {
   const chunkedInsectData = chunkArray(insectData, 4);
 
   return (
-    <div>
+    <div className="album-container">
      <h1 className="album-title">Search Insects</h1>
     <div className="search-bar-container"> {/* Add container div */}
       <input
@@ -123,6 +129,7 @@ function AlbumPage() {
           </a>
           </button>
       </div>
+      
       {chunkedInsectData.map((row, rowIndex) => (
         <ul key={rowIndex} className="card-container"> {/* Apply the card-container class */}
           {row.map((insect) => createCard(insect))}

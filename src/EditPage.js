@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import './editpage.css';
 import { useParams } from 'react-router-dom';
 
 function EditInsectPage() {
   const [name, setName] = useState('');
+  const [common_name, setCommon_name] = useState('');
+  const [scientific_name, setScientific_name] = useState('');
+  const [family, setFamily] = useState('');
   const [data, setData] = useState('');
   const [image, setImage] = useState(null);
   const [picName, setPicName] = useState('');
@@ -12,6 +15,9 @@ function EditInsectPage() {
 
   const [insect, setInsect] = useState({
     name: '',
+    common_name:'',
+    scientific_name:'',
+    family:'',
     data: '',
     pic_name: '',
   });
@@ -53,6 +59,10 @@ function EditInsectPage() {
  
     const formData = new FormData();
     formData.append('Name', name);
+    formData.append('Common_name', common_name);
+    formData.append('Scientific_name', scientific_name);
+    formData.append('Family', family);
+
     formData.append('Data', data);
     formData.append('pic_name', picName);
     formData.append('image', image);
@@ -77,6 +87,9 @@ function EditInsectPage() {
         },
         body: JSON.stringify({
           Name: insect.name ?? undefined,
+          Common_name: insect.common_name ?? undefined,
+          Scientific_name: insect.scientific_name ?? undefined,
+          Family: insect.family ?? undefined,
           Data: insect.data ?? undefined,
           pic_name: pathUpload ?? undefined
         }),
@@ -90,6 +103,9 @@ function EditInsectPage() {
 
             // Handle success, clear form fields if needed
             setName('');
+            setCommon_name('');
+            setScientific_name('');
+            setFamily('');
             setData('');
             setImage(null);
             setPicName('');
@@ -109,7 +125,7 @@ function EditInsectPage() {
   };
 
   return (
-    <div>
+    <div className="edit-page-container">
       <h1>Edit Insect</h1>
       <form>
         <div>
@@ -118,6 +134,36 @@ function EditInsectPage() {
             type="text"
             name="name"
             value={insect.name}
+            required
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>common Name : </label>
+          <input
+            type="text"
+            name="common_name"
+            value={insect.common_name}
+            required
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Scientific Name : </label>
+          <input
+            type="text"
+            name="scientific_name"
+            value={insect.scientific_name}
+            required
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Family Name : </label>
+          <input
+            type="text"
+            name="family"
+            value={insect.family}
             required
             onChange={handleInputChange}
           />
@@ -136,7 +182,7 @@ function EditInsectPage() {
           <label>Picture Name : </label>
           <input type="file" onChange={(e) => setImage(e.target.files[0])} required />
         </div>
-        <button type="button" onClick={handleEditSubmit}>
+        <button className="edit-form button" type="button" onClick={handleEditSubmit}>
           Save Changes
         </button>
       </form>

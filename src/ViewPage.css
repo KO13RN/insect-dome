@@ -1,0 +1,43 @@
+.view-page-container {
+    padding: 20px;
+    background-color: #f8f8f8; /* Light gray background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .page-content {
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .insect-details {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff; /* White background color */
+  }
+  
+  .insect-details h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .insect-details p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .insect-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+  }
+  

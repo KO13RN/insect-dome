@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './editpage.css';
 
 function AddPage() {
   const [name, setName] = useState('');
+  const [common_name, setCommon_name] = useState('');
+  const [scientific_name, setScientific_name] = useState('');
+  const [family, setFamily] = useState('');
   const [data, setData] = useState('');
   const [image, setImage] = useState(null);
   const [picName, setPicName] = useState('');
@@ -12,6 +16,9 @@ function AddPage() {
 
     const formData = new FormData();
     formData.append('Name', name);
+    formData.append('Common_name', common_name);
+    formData.append('Scientific_name', scientific_name);
+    formData.append('Family', family);
     formData.append('Data', data);
     formData.append('pic_name', picName);
     formData.append('image', image);
@@ -30,12 +37,18 @@ function AddPage() {
       // Save
        await axios.post('http://localhost:3333/save_insects', {
         Name : name,
+        Common_name : common_name,
+        Scientific_name : scientific_name,
+        Family : family,
         Data: data,
         pic_name : response.data.data
       });
  
       // Handle success, clear form fields if needed
       setName('');
+      setCommon_name('');
+      setScientific_name('');
+      setFamily('');
       setData('');
       setImage(null);
       setPicName('');
@@ -46,7 +59,7 @@ function AddPage() {
   };
 
   return (
-    <div>
+    <div className="edit-page-container">
       <h1>Add Page</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -54,6 +67,30 @@ function AddPage() {
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="Common_name"
+          value={common_name}
+          onChange={(e) => setCommon_name(e.target.value)}
+          required
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="Scientific_name"
+          value={scientific_name}
+          onChange={(e) => setScientific_name(e.target.value)}
+          required
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="Family"
+          value={family}
+          onChange={(e) => setFamily(e.target.value)}
           required
         />
         <br />
