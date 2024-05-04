@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 
 function EditInsectPage() {
   const [name, setName] = useState('');
-  const [common_name, setCommon_name] = useState('');
-  const [scientific_name, setScientific_name] = useState('');
+  const [scientific_name, setscientific_name] = useState('');
+  const [order_name, setorder_name] = useState('');
   const [family, setFamily] = useState('');
   const [data, setData] = useState('');
   const [image, setImage] = useState(null);
@@ -15,14 +15,43 @@ function EditInsectPage() {
 
   const [insect, setInsect] = useState({
     name: '',
-    common_name:'',
     scientific_name:'',
+    order_name:'',
     family:'',
     data: '',
     pic_name: '',
   });
 
   useEffect(() => {
+
+    
+      // Fetch insect data from the server
+      const token = localStorage.getItem('token')
+      fetch('http://localhost:3333/authen', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'bearer ' + token,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === 'ok') {
+            //alert('authen succers')
+  
+          } else {
+            //alert('authen fall')
+            window.location = '/Login'
+            localStorage.removeItem('token');
+  
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    
+
+
     // Fetch insect data from the server based on the provided id
     fetch(`http://localhost:3333/insects/${id}`)
       .then((response) => response.json())
@@ -36,7 +65,8 @@ function EditInsectPage() {
       .catch((error) => {
         console.error('Error fetching insect data:', error);
       });
-  }, [id]);
+  },
+   [id]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -59,8 +89,8 @@ function EditInsectPage() {
  
     const formData = new FormData();
     formData.append('Name', name);
-    formData.append('Common_name', common_name);
-    formData.append('Scientific_name', scientific_name);
+    formData.append('scientific_name', scientific_name);
+    formData.append('order_name', order_name);
     formData.append('Family', family);
 
     formData.append('Data', data);
@@ -87,8 +117,8 @@ function EditInsectPage() {
         },
         body: JSON.stringify({
           Name: insect.name ?? undefined,
-          Common_name: insect.common_name ?? undefined,
-          Scientific_name: insect.scientific_name ?? undefined,
+          scientific_name: insect.scientific_name ?? undefined,
+          order_name: insect.order_name ?? undefined,
           Family: insect.family ?? undefined,
           Data: insect.data ?? undefined,
           pic_name: pathUpload ?? undefined
@@ -103,8 +133,8 @@ function EditInsectPage() {
 
             // Handle success, clear form fields if needed
             setName('');
-            setCommon_name('');
-            setScientific_name('');
+            setscientific_name('');
+            setorder_name('');
             setFamily('');
             setData('');
             setImage(null);
@@ -129,7 +159,7 @@ function EditInsectPage() {
       <h1>Edit Insect</h1>
       <form>
         <div>
-          <label>Name : </label>
+          <label>ชื่อ : </label>
           <input
             type="text"
             name="name"
@@ -139,17 +169,7 @@ function EditInsectPage() {
           />
         </div>
         <div>
-          <label>common Name : </label>
-          <input
-            type="text"
-            name="common_name"
-            value={insect.common_name}
-            required
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Scientific Name : </label>
+          <label>ชื่อวิทยาศาสตร์ : </label>
           <input
             type="text"
             name="scientific_name"
@@ -159,7 +179,17 @@ function EditInsectPage() {
           />
         </div>
         <div>
-          <label>Family Name : </label>
+          <label>อันดับ : </label>
+          <input
+            type="text"
+            name="order_name"
+            value={insect.order_name}
+            required
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>วงศ์ : </label>
           <input
             type="text"
             name="family"
@@ -169,7 +199,7 @@ function EditInsectPage() {
           />
         </div>
         <div>
-          <label>Data : </label>
+          <label>ความสำคัญ : </label>
           <textarea
             name="data"
             value={insect.data}

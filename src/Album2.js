@@ -30,8 +30,8 @@ function AlbumPage() {
   const createCard = (insect) => (
     <li key={insect.id} className="card">
       <h2 className="card-title">{insect.name}</h2>
-      <p className="card-text">ชื่อสามัญ: {insect.common_name}</p>
       <p className="card-text"><em>ชื่อวิทยาศาสตร์: {insect.scientific_name}</em></p>
+      <p className="card-text">อันดับ: {insect.order_name}</p>
       <p className="card-text">วงศ์: {insect.family}</p>
       <img className="card-img" src={`${insect.pic_name}`} alt={insect.name} />
       <div className="card-info">

@@ -28,10 +28,10 @@ const ViewPage = () => {
           <h1 className="page-title">Insect Details</h1>
           <div className="insect-details">
             <h2>{insect.name}</h2>
-            <p><strong>ชื่อสามัญ:</strong> {insect.common_name}</p>
-            <p><strong><em>ชื่อวิทยาศาสตร์:</em></strong> <em>{insect.scientific_name}</em></p>
+            <p><strong>ชื่อวิทยาศาสตร์:</strong> {insect.scientific_name}</p>
+            <p><strong><em>อันดับ:</em></strong> <em>{insect.order_name}</em></p>
             <p><strong>วงศ์:</strong> {insect.family}</p>
-            <p><strong>Data:</strong> {insect.data}</p>
+            <p><strong>ความสำคัญ:</strong> {insect.data}</p>
             <img src={insect.pic_name} alt={insect.name} className="insect-image" />
           </div>
         </div>

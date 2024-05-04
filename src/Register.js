@@ -29,6 +29,33 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 export default function SignUp() {
+
+
+  // Fetch insect data from the server
+  const token = localStorage.getItem('token')
+  fetch('http://localhost:3333/authen', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'bearer ' + token,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.status === 'ok') {
+        //alert('authen succers')
+
+      } else {
+        //alert('authen fall')
+        window.location = '/Login'
+        localStorage.removeItem('token');
+
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+    
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -38,7 +65,7 @@ export default function SignUp() {
       fname: data.get('firstName'),
       lname: data.get('lastName'),
     };
-
+    
     fetch('http://localhost:3333/register', {
         method: 'POST',
         headers: {

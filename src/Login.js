@@ -60,7 +60,7 @@ export default function SignInSide() {
         .catch((error) => {
             console.error('Error:', error);
         });
-};
+  };
 
   return (
     <ThemeProvider theme={theme}>
